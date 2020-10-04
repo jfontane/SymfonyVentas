@@ -1,0 +1,7 @@
+ventas_homepage:
+    path:     /
+    defaults: { _controller: VentasBundle:Default:index }
+
+carro.index:
+    path:     /carro
+    defaults: { _controller: VentasBundle:Carro:index }    

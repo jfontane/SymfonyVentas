@@ -1,0 +1,75 @@
+<?php
+namespace VentasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="articulo")
+ */
+class Articulo
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $codigo;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $descripcion;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $empaque;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $precio;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $porcentajeRecargo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $codigoBarra;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $imagen;
+
+    /**
+     * Many features have one product. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="categoria", inversedBy="articulos")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+     */
+    private $categoria;
+
+    /**
+     * One product has many features. This is the inverse side.
+     * @ORM\OneToMany(targetEntity="pedidoItem", mappedBy="articulo")
+     */
+    private $itemsPedidos;
+
+
+
+
+}
